@@ -1,0 +1,9 @@
+[[redirects]]
+  from = "/instagram_strategy_report"
+  to = "/instagram_strategy_report/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/instagram_strategy_report/"
+  to = "/instagram_strategy_report/index.html"
+  status = 200
