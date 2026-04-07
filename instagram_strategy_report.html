@@ -18,11 +18,37 @@
     --green:   #16a34a;
     --amber:   #d97706;
     --red:     #dc2626;
+    --purple:  #7c3aed;
     --shadow:  0 1px 3px rgba(0,0,0,.07),0 4px 14px rgba(0,0,0,.05);
   }
   * { margin:0; padding:0; box-sizing:border-box; }
   body { background:var(--bg); color:var(--text); font-family:'Segoe UI',system-ui,sans-serif; font-size:15px; line-height:1.6; }
 
+  /* ── Text Highlight System ── */
+  .hi-red{ color:var(--red); font-weight:800; }
+  .hi-dji{ color:var(--dji); font-weight:800; }
+  .hi-green{ color:var(--green); font-weight:800; }
+  .hi-amber{ color:var(--amber); font-weight:800; }
+  .hi-purple{ color:var(--purple); font-weight:800; }
+  .hi-dark{ color:var(--text); font-weight:800; }
+
+  .mini-pill{
+    display:inline-block;
+    padding:2px 8px;
+    border-radius:999px;
+    font-size:11px;
+    font-weight:800;
+    line-height:1.2;
+    margin:2px 4px 0 0;
+    border:1px solid transparent;
+  }
+  .pill-red{ background:#fee2e2; color:#b91c1c; border-color:#fecaca; }
+  .pill-blue{ background:#dbeafe; color:#1d4ed8; border-color:#bfdbfe; }
+  .pill-green{ background:#dcfce7; color:#15803d; border-color:#bbf7d0; }
+  .pill-amber{ background:#fef3c7; color:#b45309; border-color:#fde68a; }
+  .pill-purple{ background:#ede9fe; color:#6d28d9; border-color:#ddd6fe; }
+
+  /* ── HERO ── */
   .hero { background:linear-gradient(150deg,#f8faff 0%,#eef4ff 40%,#f0f7ff 100%); padding:60px 5% 48px; border-bottom:1px solid var(--border); }
   .hero-meta { font-size:12px; color:var(--muted); letter-spacing:2px; text-transform:uppercase; margin-bottom:12px; }
   .hero h1 { font-size:clamp(26px,4vw,42px); font-weight:900; line-height:1.2; margin-bottom:10px; color:var(--text); }
@@ -30,7 +56,7 @@
   .hero-sub { color:var(--muted); font-size:14px; max-width:760px; margin-bottom:36px; line-height:1.8; }
   .hero-kpis { display:flex; gap:16px; flex-wrap:wrap; }
   .kpi-card { background:var(--surface); border:1.5px solid var(--border); border-radius:12px; padding:16px 22px; min-width:140px; box-shadow:var(--shadow); }
-  .kpi-card .num { font-size:28px; font-weight:800; line-height:1; }
+  .kpi-card .num { font-size:28px; font-weight:900; line-height:1; }
   .kpi-card .lbl { font-size:11px; color:var(--muted); margin-top:4px; text-transform:uppercase; letter-spacing:1px; }
   .kpi-card.red .num   { color:var(--red); }
   .kpi-card.green .num { color:var(--green); }
@@ -38,6 +64,7 @@
   .kpi-card.insta .num { color:var(--insta); }
   .kpi-card.dji   .num { color:var(--dji); }
 
+  /* ── SECTIONS ── */
   .section { padding:52px 5%; border-bottom:1px solid var(--border); }
   .section:last-child { border-bottom:none; }
   .section-tag { display:inline-block; font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; padding:4px 12px; border-radius:99px; margin-bottom:14px; }
@@ -46,16 +73,17 @@
   .tag-strategy { background:#ede9fe; color:#6d28d9; }
   .tag-action   { background:#dcfce7; color:#15803d; }
   .tag-kpi      { background:#fef3c7; color:#b45309; }
-  .section h2 { font-size:clamp(20px,3vw,28px); font-weight:800; margin-bottom:8px; color:var(--text); }
+  .section h2 { font-size:clamp(20px,3vw,28px); font-weight:900; margin-bottom:8px; color:var(--text); }
   .section .subtitle { color:var(--muted); margin-bottom:32px; max-width:760px; }
 
+  /* ── CARDS GRID ── */
   .grid2 { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:16px; margin-bottom:24px; }
   .grid3 { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:16px; margin-bottom:24px; }
   .grid4 { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:14px; margin-bottom:24px; }
   .card { background:var(--surface); border:1.5px solid var(--border); border-radius:12px; padding:20px 22px; box-shadow:var(--shadow); }
-  .card h3 { font-size:10px; font-weight:700; color:var(--subtle); text-transform:uppercase; letter-spacing:1px; margin-bottom:10px; }
-  .card .big { font-size:36px; font-weight:800; line-height:1; color:var(--text); }
-  .card .unit { font-size:15px; font-weight:500; color:var(--muted); }
+  .card h3 { font-size:10px; font-weight:800; color:var(--subtle); text-transform:uppercase; letter-spacing:1px; margin-bottom:10px; }
+  .card .big { font-size:36px; font-weight:900; line-height:1; color:var(--text); }
+  .card .unit { font-size:15px; font-weight:600; color:var(--muted); }
   .card .desc { font-size:12px; color:var(--muted); margin-top:8px; line-height:1.5; }
   .card.accent-insta { border-left:3px solid var(--insta); }
   .card.accent-dji   { border-left:3px solid var(--dji); }
@@ -63,60 +91,68 @@
   .card.accent-amber { border-left:3px solid var(--amber); }
   .card.accent-red   { border-left:3px solid var(--red); }
 
+  /* ── CHART WRAP ── */
   .chart-wrap { background:var(--surface); border:1.5px solid var(--border); border-radius:12px; padding:20px 22px; margin-bottom:18px; box-shadow:var(--shadow); }
-  .chart-wrap h3 { font-size:11px; color:var(--subtle); font-weight:700; margin-bottom:3px; text-transform:uppercase; letter-spacing:1px; }
+  .chart-wrap h3 { font-size:11px; color:var(--subtle); font-weight:800; margin-bottom:3px; text-transform:uppercase; letter-spacing:1px; }
   .chart-wrap .chart-note { font-size:11px; color:var(--subtle); margin-bottom:14px; }
   .chart-row { display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:18px; margin-bottom:18px; }
   .chart-container { position:relative; height:280px; }
   .chart-container.tall { height:340px; }
 
+  /* ── INSIGHT CALLOUT ── */
   .insight-box { background:#eff6ff; border:1px solid #bfdbfe; border-radius:10px; padding:16px 20px; margin:14px 0; }
   .insight-box .icon { font-size:18px; margin-bottom:6px; }
-  .insight-box p { font-size:13px; color:#1e3a5f; line-height:1.7; }
+  .insight-box p { font-size:13px; color:#1e3a5f; line-height:1.8; }
   .insight-box strong { color:#1d4ed8; }
 
+  /* ── PROBLEM ITEMS ── */
   .problem-item { display:flex; gap:16px; align-items:flex-start; padding:16px 18px; background:var(--surface); border-radius:12px; border:1.5px solid var(--border); border-left:4px solid var(--red); margin-bottom:12px; box-shadow:var(--shadow); }
   .problem-num { font-size:22px; font-weight:900; color:var(--red); min-width:34px; }
-  .problem-item h4 { font-size:14px; font-weight:700; margin-bottom:4px; color:var(--text); }
+  .problem-item h4 { font-size:14px; font-weight:800; margin-bottom:4px; color:var(--text); }
   .problem-item p { font-size:13px; color:var(--muted); }
 
-  .pillar { background:var(--surface); border-radius:12px; padding:22px; border-top:3px solid var(--dji); border:1.5px solid var(--border); border-top:3px solid var(--dji); box-shadow:var(--shadow); }
-  .pillar .pillar-num { font-size:10px; color:var(--dji); font-weight:700; text-transform:uppercase; letter-spacing:2px; }
-  .pillar h3 { font-size:16px; font-weight:800; margin:6px 0 10px; color:var(--text); }
-  .pillar p { font-size:13px; color:var(--muted); line-height:1.7; }
+  /* ── STRATEGY PILLARS ── */
+  .pillar { background:var(--surface); border-radius:12px; padding:22px; border:1.5px solid var(--border); border-top:3px solid var(--dji); box-shadow:var(--shadow); }
+  .pillar .pillar-num { font-size:10px; color:var(--dji); font-weight:800; text-transform:uppercase; letter-spacing:2px; }
+  .pillar h3 { font-size:16px; font-weight:900; margin:6px 0 10px; color:var(--text); }
+  .pillar p { font-size:13px; color:var(--muted); line-height:1.75; }
   .pillar ul { margin-top:10px; padding-left:16px; }
   .pillar ul li { font-size:13px; color:var(--muted); margin-bottom:5px; }
-  .pillar ul li span { color:var(--text); font-weight:600; }
+  .pillar ul li span { color:var(--text); font-weight:800; }
 
+  /* ── ACTION TABLE ── */
   .action-table { width:100%; border-collapse:collapse; margin-bottom:20px; background:var(--surface); border-radius:12px; overflow:hidden; box-shadow:var(--shadow); }
-  .action-table th { background:#f8fafc; padding:10px 16px; text-align:left; font-size:10px; text-transform:uppercase; letter-spacing:1px; color:var(--muted); border-bottom:2px solid var(--border); font-weight:700; }
+  .action-table th { background:#f8fafc; padding:10px 16px; text-align:left; font-size:10px; text-transform:uppercase; letter-spacing:1px; color:var(--muted); border-bottom:2px solid var(--border); font-weight:800; }
   .action-table td { padding:12px 16px; border-bottom:1px solid var(--border); font-size:13px; vertical-align:top; color:var(--text); }
   .action-table tr:last-child td { border-bottom:none; }
   .action-table tr:hover td { background:#f8fafc; }
-  .badge { display:inline-block; padding:3px 10px; border-radius:99px; font-size:11px; font-weight:700; }
+  .badge { display:inline-block; padding:3px 10px; border-radius:99px; font-size:11px; font-weight:800; }
   .badge-now   { background:#fee2e2; color:#b91c1c; }
   .badge-soon  { background:#fef3c7; color:#92400e; }
   .badge-plan  { background:#dcfce7; color:#166534; }
-  .badge-insta { background:#fce7f3; color:#9d174d; }
-  .badge-dji   { background:#dbeafe; color:#1e40af; }
 
+  /* ── KPI TABLE ── */
   .kpi-table { width:100%; border-collapse:collapse; background:var(--surface); border-radius:12px; overflow:hidden; box-shadow:var(--shadow); }
-  .kpi-table th { padding:10px 16px; text-align:left; font-size:10px; text-transform:uppercase; letter-spacing:1px; color:var(--muted); border-bottom:2px solid var(--border); background:#f8fafc; font-weight:700; }
+  .kpi-table th { padding:10px 16px; text-align:left; font-size:10px; text-transform:uppercase; letter-spacing:1px; color:var(--muted); border-bottom:2px solid var(--border); background:#f8fafc; font-weight:800; }
   .kpi-table td { padding:13px 16px; border-bottom:1px solid var(--border); font-size:13px; color:var(--text); }
   .kpi-table tr:last-child td { border-bottom:none; }
-  .kpi-table .current { color:var(--red); font-weight:700; }
-  .kpi-table .target  { color:var(--green); font-weight:700; }
-  .kpi-table .metric  { font-weight:700; color:var(--text); }
+  .kpi-table .current { color:var(--red); font-weight:800; }
+  .kpi-table .target  { color:var(--green); font-weight:800; }
+  .kpi-table .metric  { font-weight:800; color:var(--text); }
 
+  /* ── VS COMPARE ── */
   .vs-row { display:grid; grid-template-columns:1fr 60px 1fr; gap:8px; align-items:center; margin-bottom:10px; }
   .vs-row .brand-a { text-align:right; font-size:14px; }
   .vs-row .brand-b { text-align:left; font-size:14px; }
-  .vs-row .vs-mid { text-align:center; color:var(--subtle); font-weight:700; font-size:11px; }
-  .val-insta { color:var(--insta); font-weight:700; }
-  .val-dji   { color:var(--dji); font-weight:700; }
-  .val-win   { font-weight:800; font-size:16px; }
+  .vs-row .vs-mid { text-align:center; color:var(--subtle); font-weight:800; font-size:11px; }
+  .val-insta { color:var(--insta); font-weight:800; }
+  .val-dji   { color:var(--dji); font-weight:800; }
+  .val-win   { font-weight:900; font-size:16px; }
 
+  /* ── FOOTER ── */
   .footer { padding:28px 5%; text-align:center; color:var(--muted); font-size:12px; border-top:1px solid var(--border); background:var(--surface); line-height:1.8; }
+
+  /* ── DIVIDER ── */
   .divider { height:1px; background:var(--border); margin:24px 0; }
 </style>
 </head>
@@ -126,11 +162,11 @@
   <div class="hero-meta">機密 · 市場戰略匯報 · 2026年4月</div>
   <h1>DJI Store HK<br><span>Instagram 競爭分析與增長策略</span></h1>
   <p class="hero-sub">
-    <span style="display:inline-block;background:rgba(219,234,254,.6);color:#1d4ed8;font-size:11px;font-weight:700;padding:2px 10px;border-radius:99px;margin-right:6px;">層級一 · 品牌帳號</span><strong>2,569 帖</strong> — @djistore_hk · @dji_hk · @insta360_hk · @insta360
+    <span style="display:inline-block;background:rgba(219,234,254,.6);color:#1d4ed8;font-size:11px;font-weight:800;padding:2px 10px;border-radius:99px;margin-right:6px;">層級一 · 品牌帳號</span><strong class="hi-dark">2,569 帖</strong> — @djistore_hk · @dji_hk · @insta360_hk · @insta360
     <br style="margin-bottom:4px;">
-    <span style="display:inline-block;background:rgba(220,252,231,.7);color:#15803d;font-size:11px;font-weight:700;padding:2px 10px;border-radius:99px;margin-right:6px;margin-top:6px;">層級二 · UGC 聲量</span><strong>938 帖</strong> — Hashtag 真實用戶（Posts 341 + Reels 597）
+    <span style="display:inline-block;background:rgba(220,252,231,.7);color:#15803d;font-size:11px;font-weight:800;padding:2px 10px;border-radius:99px;margin-right:6px;margin-top:6px;">層級二 · UGC 聲量</span><strong class="hi-dark">938 帖</strong> — Hashtag 真實用戶（Posts 341 + Reels 597）
     <br><br>
-    本報告以 <strong>DJI Store HK</strong> 為決策主體，目標不是協助競品修正弱點，而是找出 DJI 現有優勢尚未被放大的位置，並制定可執行的內容擴張策略，在香港市場進一步拉開與 Insta360 的差距。
+    本報告以 <strong class="hi-dji">DJI Store HK</strong> 為決策主體，目標不是協助競品修正弱點，而是找出 DJI 現有優勢尚未被放大的位置，並制定可執行的內容擴張策略，在香港市場進一步拉開與 Insta360 的差距。
   </p>
 
   <div class="hero-kpis">
@@ -173,21 +209,36 @@
     <div class="problem-num">P1</div>
     <div>
       <h4>互動率領先，但未形成壓制性優勢</h4>
-      <p>DJI Store HK（@djistore_hk）互動率為 0.45%，已高於 Insta360 HK 的 0.30%，但差距仍不足以形成穩定的市場壓制。以 1.1 萬粉絲規模計算，平均每帖約 49 讚，仍有放大空間，尚未建立「高互動品牌帳號」定位。</p>
+      <p>DJI Store HK（@djistore_hk）互動率為 <strong class="hi-dji">0.45%</strong>，已高於 Insta360 HK 的 <strong class="hi-red">0.30%</strong>，但差距仍不足以形成穩定的市場壓制。以 <strong class="hi-dark">1.1 萬粉絲</strong>規模計算，平均每帖約 <strong class="hi-red">49 讚</strong>，仍有放大空間，尚未建立「高互動品牌帳號」定位。</p>
+      <div style="margin-top:6px;">
+        <span class="mini-pill pill-blue">ER 已領先</span>
+        <span class="mini-pill pill-red">未形成壓制</span>
+      </div>
     </div>
   </div>
+
   <div class="problem-item">
     <div class="problem-num">P2</div>
     <div>
       <h4>UGC 聲量領先，但尚未建立飛輪效應</h4>
-      <p>DJI 已擁有更強的社群基礎：UGC 獨立創作者 359 人，高於 Insta360 的 217 人；真實用戶自發創作帖數 435 帖，高於 Insta360 的 260 帖。問題不在於是否領先，而在於未把這個優勢轉化為可持續放大的創作網絡。</p>
+      <p>DJI 已擁有更強的社群基礎：UGC 獨立創作者 <strong class="hi-dji">359 人</strong>，高於 Insta360 的 <strong class="hi-red">217 人</strong>；真實用戶自發創作帖數 <strong class="hi-dji">435 帖</strong>，高於 Insta360 的 <strong class="hi-red">260 帖</strong>。問題不在於是否領先，而在於未把這個優勢轉化為可持續放大的創作網絡。</p>
+      <div style="margin-top:6px;">
+        <span class="mini-pill pill-green">創作者領先</span>
+        <span class="mini-pill pill-green">UGC 帖數領先</span>
+        <span class="mini-pill pill-purple">尚未飛輪化</span>
+      </div>
     </div>
   </div>
+
   <div class="problem-item">
     <div class="problem-num">P3</div>
     <div>
       <h4>內容策略仍未完全影片化，錯失演算法紅利</h4>
-      <p>DJI Store HK 的 Reels 佔比約 68%，雖高於 Insta360 HK 的 64%，但與全球主帳號 @dji 的 98% 仍有明顯落差。Instagram 的內容分發已高度偏向短影片，代表 DJI 在流量效率上仍有可觀提升空間。</p>
+      <p>DJI Store HK 的 Reels 佔比約 <strong class="hi-amber">68%</strong>，雖高於 Insta360 HK 的 <strong class="hi-red">64%</strong>，但與全球主帳號 @dji 的 <strong class="hi-dji">98%</strong> 仍有明顯落差。Instagram 的內容分發已高度偏向短影片，代表 DJI 在流量效率上仍有可觀提升空間。</p>
+      <div style="margin-top:6px;">
+        <span class="mini-pill pill-amber">影片化未到頂</span>
+        <span class="mini-pill pill-blue">分發效率可提升</span>
+      </div>
     </div>
   </div>
 </div>
@@ -196,8 +247,8 @@
   <div class="section-tag tag-insight">02 · Insight</div>
   <h2>數據洞察：真正的問題不是落後，而是優勢未被放大</h2>
   <p class="subtitle">
-    <span style="background:#dbeafe;color:#1d4ed8;font-size:10px;font-weight:700;padding:1px 8px;border-radius:99px;margin-right:4px;">品牌帳號</span>2,569 帖 &nbsp;·&nbsp;
-    <span style="background:#dcfce7;color:#15803d;font-size:10px;font-weight:700;padding:1px 8px;border-radius:99px;margin-right:4px;">UGC</span>938 帖（Posts 341 + Reels 597）
+    <span style="background:#dbeafe;color:#1d4ed8;font-size:10px;font-weight:800;padding:1px 8px;border-radius:99px;margin-right:4px;">品牌帳號</span><strong class="hi-dark">2,569 帖</strong> &nbsp;·&nbsp;
+    <span style="background:#dcfce7;color:#15803d;font-size:10px;font-weight:800;padding:1px 8px;border-radius:99px;margin-right:4px;">UGC</span><strong class="hi-dark">938 帖</strong>（Posts 341 + Reels 597）
   </p>
 
   <div class="chart-row">
@@ -219,7 +270,7 @@
 
   <div class="insight-box">
     <div class="icon">💡</div>
-    <p><strong>關鍵洞察：</strong>DJI 已經在本地市場關鍵指標上領先 Insta360 HK——互動率更高、UGC 創作者更多、UGC 爆發速度更快。真正的問題不是「如何追上競品」，而是 <strong>如何把現有優勢轉化為更大的市場支配力</strong>。若將 Reels 佔比由 68% 提升至 90%+，並把 UGC 改成制度化放大機制，DJI Store HK 的 ER 有機會提升至 <strong>0.8%–1.0%</strong>。</p>
+    <p><strong>關鍵洞察：</strong>DJI 已經在本地市場關鍵指標上領先 Insta360 HK——<strong class="hi-dji">互動率更高</strong>、<strong class="hi-dji">UGC 創作者更多</strong>、<strong class="hi-dji">UGC 爆發速度更快</strong>。真正的問題不是「如何追上競品」，而是 <strong>如何把現有優勢轉化為更大的市場支配力</strong>。若將 Reels 佔比由 <strong class="hi-amber">68%</strong> 提升至 <strong class="hi-green">90%+</strong>，並把 UGC 改成制度化放大機制，DJI Store HK 的 ER 有機會提升至 <strong class="hi-green">0.8%–1.0%</strong>。</p>
   </div>
 
   <div class="divider"></div>
@@ -251,7 +302,7 @@
 
   <div class="insight-box">
     <div class="icon">📈</div>
-    <p><strong>UGC 趨勢洞察：</strong>2026 年 3–4 月，DJI UGC 帖數由 105 增至 146，同期 Insta360 由 57 增至 109。兩者均進入成長期，但 <strong>DJI 的爆發量與創作密度更強</strong>。這表示市場對 DJI 產品的拍攝、討論與分享意願更高；接下來的重點不應是等待自然成長，而是主動將 UGC 變成擴散引擎。</p>
+    <p><strong>UGC 趨勢洞察：</strong>2026 年 3–4 月，DJI UGC 帖數由 <strong class="hi-dji">105</strong> 增至 <strong class="hi-dji">146</strong>，同期 Insta360 由 <strong class="hi-red">57</strong> 增至 <strong class="hi-red">109</strong>。兩者均進入成長期，但 <strong>DJI 的爆發量與創作密度更強</strong>。這表示市場對 DJI 產品的拍攝、討論與分享意願更高；接下來的重點不應是等待自然成長，而是主動將 UGC 變成擴散引擎。</p>
   </div>
 
   <div class="divider"></div>
@@ -260,9 +311,9 @@
   <div class="chart-wrap">
     <div style="max-width:560px;margin:0 auto;">
       <div class="vs-row" style="margin-bottom:4px;">
-        <div style="text-align:right;font-size:12px;color:var(--dji);font-weight:700;">DJI STORE HK</div>
+        <div style="text-align:right;font-size:12px;color:var(--dji);font-weight:800;">DJI STORE HK</div>
         <div></div>
-        <div style="text-align:left;font-size:12px;color:var(--insta);font-weight:700;">INSTA360 HK</div>
+        <div style="text-align:left;font-size:12px;color:var(--insta);font-weight:800;">INSTA360 HK</div>
       </div>
       <div class="vs-row">
         <div class="brand-a"><span class="val-dji val-win">0.45%</span> ✓</div>
@@ -307,7 +358,7 @@
     <div class="pillar">
       <div class="pillar-num">策略一</div>
       <h3>🎬 演算法主導：全面 Reels 化</h3>
-      <p>對標 @dji 全球帳號（98% Reels / ER 1.35%），將 DJI Store HK 從目前 68% Reels，推進至 90%+。重點不是單純增加影片數量，而是提升帳號對 Instagram 推薦流量的掌控能力。</p>
+      <p>對標 @dji 全球帳號（<strong class="hi-dji">98% Reels</strong> / <strong class="hi-dji">ER 1.35%</strong>），將 DJI Store HK 從目前 <strong class="hi-amber">68%</strong> Reels，推進至 <strong class="hi-green">90%+</strong>。重點不是單純增加影片數量，而是提升帳號對 Instagram 推薦流量的掌控能力。</p>
       <ul>
         <li><span>每週發佈 5–7 條 Reels</span>，提升內容密度</li>
         <li><span>前 3 秒強化 Hook</span>，提升停留率</li>
@@ -358,52 +409,52 @@
     <tbody>
       <tr>
         <td><span class="badge badge-now">立即</span></td>
-        <td><strong>停止低效率圖片內容</strong><br><span style="color:var(--muted);font-size:12px">除產品公告或重大發佈外，圖片內容優先改為輪播或 Reels</span></td>
+        <td><strong class="hi-red">停止低效率圖片內容</strong><br><span style="color:var(--muted);font-size:12px">除產品公告或重大發佈外，圖片內容優先改為輪播或 Reels</span></td>
         <td>本週起</td>
         <td>內容團隊</td>
-        <td>提升影片佔比，增加推薦流量</td>
+        <td><span class="hi-dji">提升影片佔比，增加推薦流量</span></td>
       </tr>
       <tr>
         <td><span class="badge badge-now">立即</span></td>
-        <td><strong>建立 Reels 內容 SOP</strong><br><span style="color:var(--muted);font-size:12px">統一影片結構：Hook → 示範 → 收尾 CTA，降低產能波動</span></td>
+        <td><strong class="hi-red">建立 Reels 內容 SOP</strong><br><span style="color:var(--muted);font-size:12px">統一影片結構：Hook → 示範 → 收尾 CTA，降低產能波動</span></td>
         <td>2 週內</td>
         <td>內容團隊</td>
-        <td>提升影片穩定產出與完成率</td>
+        <td><span class="hi-dji">提升影片穩定產出與完成率</span></td>
       </tr>
       <tr>
         <td><span class="badge badge-soon">短期</span></td>
-        <td><strong>推出 #ShotOnDJIHK UGC 機制</strong><br><span style="color:var(--muted);font-size:12px">以主題式挑戰串連創作者內容，建立香港本地 UGC 聚合入口</span></td>
+        <td><strong class="hi-amber">推出 #ShotOnDJIHK UGC 機制</strong><br><span style="color:var(--muted);font-size:12px">以主題式挑戰串連創作者內容，建立香港本地 UGC 聚合入口</span></td>
         <td>第 1 個月</td>
         <td>市場部</td>
-        <td>UGC 參與度提升，創作者數成長</td>
+        <td><span class="hi-green">UGC 參與度提升，創作者數成長</span></td>
       </tr>
       <tr>
         <td><span class="badge badge-soon">短期</span></td>
-        <td><strong>Reels 發佈頻率提升至每週 5–7 條</strong><br><span style="color:var(--muted);font-size:12px">主題包括：產品應用、用戶 POV、功能技巧、情境展示</span></td>
+        <td><strong class="hi-amber">Reels 發佈頻率提升至每週 5–7 條</strong><br><span style="color:var(--muted);font-size:12px">主題包括：產品應用、用戶 POV、功能技巧、情境展示</span></td>
         <td>第 1–2 個月</td>
         <td>內容團隊</td>
-        <td>ER 由 0.45% → 0.70%</td>
+        <td><span class="hi-green">ER 由 0.45% → 0.70%</span></td>
       </tr>
       <tr>
         <td><span class="badge badge-soon">短期</span></td>
-        <td><strong>建立每週 UGC repost 機制</strong><br><span style="color:var(--muted);font-size:12px">固定轉發高質量用戶內容，讓創作者有被看見的明確回報</span></td>
+        <td><strong class="hi-amber">建立每週 UGC repost 機制</strong><br><span style="color:var(--muted);font-size:12px">固定轉發高質量用戶內容，讓創作者有被看見的明確回報</span></td>
         <td>第 2 個月</td>
         <td>社群管理</td>
-        <td>提升 UGC 投稿動力與社群參與</td>
+        <td><span class="hi-green">提升 UGC 投稿動力與社群參與</span></td>
       </tr>
       <tr>
         <td><span class="badge badge-plan">中期</span></td>
-        <td><strong>建立本地 KOL 長期合作池</strong><br><span style="color:var(--muted);font-size:12px">篩選 5–8 位香港微型KOL，建立季度合作而非一次性買帖</span></td>
+        <td><strong class="hi-green">建立本地 KOL 長期合作池</strong><br><span style="color:var(--muted);font-size:12px">篩選 5–8 位香港微型KOL，建立季度合作而非一次性買帖</span></td>
         <td>第 3–4 個月</td>
         <td>市場部 + KOL</td>
-        <td>內容節點穩定擴張，品牌曝光持續性提升</td>
+        <td><span class="hi-dji">內容節點穩定擴張，品牌曝光持續性提升</span></td>
       </tr>
       <tr>
         <td><span class="badge badge-plan">中期</span></td>
-        <td><strong>建立月度數據回測機制</strong><br><span style="color:var(--muted);font-size:12px">每月追蹤 ER、Reels 佔比、UGC 量、合作帖表現，與 Insta360 同期比較</span></td>
+        <td><strong class="hi-green">建立月度數據回測機制</strong><br><span style="color:var(--muted);font-size:12px">每月追蹤 ER、Reels 佔比、UGC 量、合作帖表現，與 Insta360 同期比較</span></td>
         <td>持續</td>
         <td>分析團隊</td>
-        <td>用數據持續優化策略與資源分配</td>
+        <td><span class="hi-dji">用數據持續優化策略與資源分配</span></td>
       </tr>
     </tbody>
   </table>
@@ -475,22 +526,22 @@
   <div class="grid4">
     <div class="card accent-dji">
       <h3>首要目標</h3>
-      <div class="big">1.00<span class="unit">%</span></div>
-      <div class="desc">6 個月後 ER 目標<br>（現況 0.45%）</div>
+      <div class="big hi-dji">1.00<span class="unit">%</span></div>
+      <div class="desc">6 個月後 ER 目標<br>（現況 <span class="hi-red">0.45%</span>）</div>
     </div>
     <div class="card accent-green">
       <h3>UGC 創作者</h3>
-      <div class="big">600<span class="unit">人</span></div>
-      <div class="desc">進一步擴大創作者網絡<br>（現況 359 人）</div>
+      <div class="big hi-green">600<span class="unit">人</span></div>
+      <div class="desc">進一步擴大創作者網絡<br>（現況 <span class="hi-dji">359 人</span>）</div>
     </div>
     <div class="card accent-amber">
       <h3>Reels 佔比</h3>
-      <div class="big">90<span class="unit">%</span></div>
-      <div class="desc">全面靠近全球主帳號<br>（現況 68%）</div>
+      <div class="big hi-amber">90<span class="unit">%</span></div>
+      <div class="desc">全面靠近全球主帳號<br>（現況 <span class="hi-red">68%</span>）</div>
     </div>
     <div class="card accent-red">
       <h3>市場差距</h3>
-      <div class="big">2×<span class="unit">ER差距</span></div>
+      <div class="big hi-purple">2×<span class="unit">ER差距</span></div>
       <div class="desc">把與 Insta360 HK 的互動率差距<br>由 1.5 倍擴大至 2 倍以上</div>
     </div>
   </div>
