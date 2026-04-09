@@ -574,6 +574,33 @@ html,body{
   #navbar{padding:0 10px;}
   .nav-btn{padding:7px 12px;font-size:12px;}
 }
+
+/* ── 手機版 Navbar 兩層 ── */
+#navbar-row2{display:none;}
+
+@media (max-width:600px){
+  :root{--nav-h:108px;}
+  #navbar{
+    grid-template-rows:1fr auto;
+    padding:6px 10px 8px;
+    gap:5px;
+  }
+  /* 手機版：隱藏 row1 的 返回首頁 和 目錄（改移到 row2） */
+  .nav-l a.nav-btn{display:none;}
+  #btnTOC{display:none;}
+  /* row2：顯示並橫跨三欄 */
+  #navbar-row2{
+    display:flex;
+    grid-column:1 / -1;
+    gap:8px;
+  }
+  #navbar-row2 .nav-btn{
+    flex:1;
+    justify-content:center;
+    font-size:13px;
+    padding:7px 10px;
+  }
+}
 </style>
 </head>
 <body>
@@ -1131,6 +1158,11 @@ html,body{
   <div class="nav-r">
     <button class="nav-btn btn-toc" id="btnTOC" onclick="goTo(1)">☰ 目錄</button>
     <button class="nav-btn" id="btnNext" onclick="changeSlide(1)">下一頁 &#8594;</button>
+  </div>
+  <!-- 手機版第二層：返回首頁 + 目錄 -->
+  <div id="navbar-row2">
+    <a href="index.html" class="nav-btn" style="text-decoration:none;">🏠 返回首頁</a>
+    <button class="nav-btn btn-toc" onclick="goTo(1)">☰ 目錄</button>
   </div>
 </div>
 
