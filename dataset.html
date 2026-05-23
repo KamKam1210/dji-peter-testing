@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DJI Store HK · 數據集</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: 'Microsoft JhengHei', 'Segoe UI', sans-serif;
+  background: #f0f4f8;
+  min-height: 100vh;
+  padding: 32px 16px 48px;
+}
+.topbar {
+  max-width: 1200px;
+  margin: 0 auto 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 16px;
+  background: #fff;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 99px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #0055b3;
+  text-decoration: none;
+  box-shadow: 0 1px 4px rgba(0,0,0,.06);
+  transition: box-shadow .15s;
+}
+.back-btn:hover { box-shadow: 0 4px 16px rgba(0,0,0,.12); }
+.logo-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #0055b3;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 800;
+  padding: 5px 14px;
+  border-radius: 99px;
+  letter-spacing: .8px;
+  margin-left: auto;
+}
+
+.header {
+  max-width: 1200px;
+  margin: 0 auto 28px;
+}
+.header h1 {
+  font-size: 26px;
+  font-weight: 900;
+  color: #0f172a;
+  margin-bottom: 6px;
+}
+.header p {
+  font-size: 13px;
+  color: #64748b;
+}
+.sheet-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  color: #0055b3;
+  text-decoration: none;
+  font-weight: 600;
+  margin-top: 6px;
+}
+.sheet-link:hover { text-decoration: underline; }
+
+.controls {
+  max-width: 1200px;
+  margin: 0 auto 16px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.search-wrap {
+  position: relative;
+  flex: 1;
+  min-width: 200px;
+}
+.search-wrap svg {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #94a3b8;
+}
+#searchInput {
+  width: 100%;
+  padding: 9px 12px 9px 36px;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 10px;
+  font-size: 13px;
+  background: #fff;
+  outline: none;
+  transition: border-color .15s;
+}
+#searchInput:focus { border-color: #0055b3; }
+.row-count {
+  font-size: 12px;
+  color: #94a3b8;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.refresh-btn {
+  padding: 8px 16px;
+  background: #0055b3;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background .15s;
+}
+.refresh-btn:hover { background: #003f8a; }
+
+.table-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: #fff;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0,0,0,.06);
+  overflow: hidden;
+}
+.table-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+thead {
+  background: #f8fafc;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+th {
+  padding: 12px 14px;
+  text-align: left;
+  font-size: 11px;
+  font-weight: 800;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  border-bottom: 1.5px solid #e2e8f0;
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  transition: background .12s;
+}
+th:hover { background: #f1f5f9; color: #0055b3; }
+th.sort-asc::after { content: ' ↑'; color: #0055b3; }
+th.sort-desc::after { content: ' ↓'; color: #0055b3; }
+td {
+  padding: 10px 14px;
+  border-bottom: 1px solid #f1f5f9;
+  color: #334155;
+  max-width: 280px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+td:hover {
+  white-space: normal;
+  word-break: break-word;
+  background: #f8fafc;
+}
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: #f8fafc; }
+tr:nth-child(even) td { background: #fcfcfe; }
+tr:nth-child(even):hover td { background: #f0f4f8; }
+
+.state-box {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: #fff;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 60px 20px;
+  text-align: center;
+  box-shadow: 0 2px 12px rgba(0,0,0,.06);
+}
+.spinner {
+  width: 36px;
+  height: 36px;
+  border: 3px solid #e2e8f0;
+  border-top-color: #0055b3;
+  border-radius: 50%;
+  animation: spin .7s linear infinite;
+  margin: 0 auto 16px;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.state-box h3 { font-size: 16px; color: #0f172a; margin-bottom: 6px; }
+.state-box p { font-size: 13px; color: #64748b; }
+.error-icon { font-size: 40px; margin-bottom: 12px; }
+.retry-btn {
+  margin-top: 16px;
+  padding: 8px 20px;
+  background: #0055b3;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.footer {
+  max-width: 1200px;
+  margin: 20px auto 0;
+  text-align: center;
+  font-size: 11px;
+  color: #cbd5e1;
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a class="back-btn" href="index.html">← 返回主頁</a>
+  <div class="logo-pill">🚁 DJI Store HK</div>
+</div>
+
+<div class="header">
+  <h1>📊 Instagram 數據集</h1>
+  <p>品牌帳號及 UGC 帖文原始數據 · 自動從 Google Sheets 載入</p>
+  <a class="sheet-link" href="https://docs.google.com/spreadsheets/d/1_DQmfdsS_Ch9sfBsBMcXkWfSIUeCpJ4ebXcvwApsOv0/edit?usp=sharing" target="_blank" rel="noopener">
+    📋 在 Google Sheets 中查看原始數據 ↗
+  </a>
+</div>
+
+<div class="controls" id="controls" style="display:none">
+  <div class="search-wrap">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <input id="searchInput" type="text" placeholder="搜尋任何欄位...">
+  </div>
+  <span class="row-count" id="rowCount"></span>
+  <button class="refresh-btn" onclick="loadData()">↻ 重新載入</button>
+</div>
+
+<div id="stateBox" class="state-box">
+  <div class="spinner"></div>
+  <h3>正在載入數據...</h3>
+  <p>從 Google Sheets 獲取數據，請稍候</p>
+</div>
+
+<div class="table-wrap" id="tableWrap" style="display:none">
+  <div class="table-scroll">
+    <table id="dataTable">
+      <thead id="tableHead"></thead>
+      <tbody id="tableBody"></tbody>
+    </table>
+  </div>
+</div>
+
+<div class="footer">DJI Store HK · Instagram 競爭分析系統 · 數據截至 2026年4月4日</div>
+
+<script>
+const SHEET_ID = '1_DQmfdsS_Ch9sfBsBMcXkWfSIUeCpJ4ebXcvwApsOv0';
+const CSV_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv`;
+
+let allRows = [];
+let headers = [];
+let sortCol = -1;
+let sortDir = 1;
+
+function parseCSV(text) {
+  const lines = [];
+  let cur = '', inQ = false, row = [];
+  for (let i = 0; i < text.length; i++) {
+    const ch = text[i];
+    if (ch === '"') {
+      if (inQ && text[i+1] === '"') { cur += '"'; i++; }
+      else inQ = !inQ;
+    } else if (ch === ',' && !inQ) {
+      row.push(cur); cur = '';
+    } else if ((ch === '\n' || ch === '\r') && !inQ) {
+      if (ch === '\r' && text[i+1] === '\n') i++;
+      row.push(cur); cur = '';
+      lines.push(row); row = [];
+    } else {
+      cur += ch;
+    }
+  }
+  if (cur || row.length) { row.push(cur); lines.push(row); }
+  return lines.filter(r => r.some(c => c.trim()));
+}
+
+function renderTable(rows) {
+  const query = document.getElementById('searchInput').value.toLowerCase();
+  const filtered = query
+    ? rows.filter(r => r.some(c => c.toLowerCase().includes(query)))
+    : rows;
+
+  const body = document.getElementById('tableBody');
+  body.innerHTML = '';
+  filtered.forEach(row => {
+    const tr = document.createElement('tr');
+    row.forEach((cell, ci) => {
+      const td = document.createElement('td');
+      td.textContent = cell;
+      td.title = cell;
+      tr.appendChild(td);
+    });
+    body.appendChild(tr);
+  });
+
+  document.getElementById('rowCount').textContent =
+    `顯示 ${filtered.length.toLocaleString()} / ${rows.length.toLocaleString()} 行`;
+}
+
+function sortRows(col) {
+  if (sortCol === col) sortDir *= -1;
+  else { sortCol = col; sortDir = 1; }
+
+  allRows.sort((a, b) => {
+    const av = a[col] || '', bv = b[col] || '';
+    const an = parseFloat(av), bn = parseFloat(bv);
+    if (!isNaN(an) && !isNaN(bn)) return (an - bn) * sortDir;
+    return av.localeCompare(bv, 'zh-HK') * sortDir;
+  });
+
+  document.querySelectorAll('th').forEach((th, i) => {
+    th.classList.remove('sort-asc', 'sort-desc');
+    if (i === col) th.classList.add(sortDir === 1 ? 'sort-asc' : 'sort-desc');
+  });
+
+  renderTable(allRows);
+}
+
+async function loadData() {
+  document.getElementById('stateBox').innerHTML = `
+    <div class="spinner"></div>
+    <h3>正在載入數據...</h3>
+    <p>從 Google Sheets 獲取數據，請稍候</p>`;
+  document.getElementById('stateBox').style.display = '';
+  document.getElementById('tableWrap').style.display = 'none';
+  document.getElementById('controls').style.display = 'none';
+
+  try {
+    const res = await fetch(CSV_URL);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const text = await res.text();
+    const parsed = parseCSV(text);
+    if (parsed.length < 2) throw new Error('No data');
+
+    headers = parsed[0];
+    allRows = parsed.slice(1);
+    sortCol = -1; sortDir = 1;
+
+    const head = document.getElementById('tableHead');
+    head.innerHTML = '';
+    const tr = document.createElement('tr');
+    headers.forEach((h, i) => {
+      const th = document.createElement('th');
+      th.textContent = h || `欄 ${i+1}`;
+      th.onclick = () => sortRows(i);
+      tr.appendChild(th);
+    });
+    head.appendChild(tr);
+
+    document.getElementById('stateBox').style.display = 'none';
+    document.getElementById('tableWrap').style.display = '';
+    document.getElementById('controls').style.display = '';
+    renderTable(allRows);
+
+  } catch (e) {
+    document.getElementById('stateBox').innerHTML = `
+      <div class="error-icon">⚠️</div>
+      <h3>無法載入數據</h3>
+      <p>請確保 Google Sheets 已設為「任何人可查看」，<br>或直接在 Google Sheets 中查看。</p>
+      <p style="margin-top:8px;font-size:11px;color:#94a3b8">${e.message}</p>
+      <button class="retry-btn" onclick="loadData()">重試</button>`;
+  }
+}
+
+document.getElementById('searchInput')?.addEventListener('input', () => renderTable(allRows));
+loadData();
+</script>
+</body>
+</html>
